@@ -10,14 +10,14 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
   TabController _tabController;
   final List<Map<String, String>> foods = [
     {
-      'name': 'Rice and meat',
+      'name': 'Ориз с пилешко месо',
       'price': '130.00',
       'rate': '4.8',
       'clients': '150',
       'image': 'images/plate-003.png'
     },
     {
-      'name': 'Vegan food',
+      'name': 'Вегетерианска порция',
       'price': '400.00',
       'rate': '4.2',
       'clients': '150',
@@ -82,7 +82,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                                 Icon(Icons.delete_outline)
                               ],
                             ),
-                            Text('\$${food['price']}'),
+                            Text('${food['price']} лв.'),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
@@ -97,7 +97,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                                     horizontal: 12.0,
                                   ),
                                   child: Text(
-                                    'Add To 2',
+                                    '2',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -170,17 +170,17 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                                 children: <Widget>[
                                   Text(food['name']),
                                   Text(
-                                    'Item-2',
+                                    '2 бр.',
                                     style: TextStyle(color: primaryColor),
                                   ),
                                 ],
                               ),
                             ),
-                            Text('\$${food['price']}'),
+                            Text('${food['price']} лв.'),
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
-                                'View Detail',
+                                'Преглед',
                                 textAlign: TextAlign.end,
                               ),
                             )
@@ -242,7 +242,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                               padding: const EdgeInsets.symmetric(vertical: 5.0),
                               child: Text(food['name']),
                             ),
-                            Text('\$${food['price']}'),
+                            Text('${food['price']} лв.'),
                             Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
                                 child: Row(
@@ -250,7 +250,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                                   children: <Widget>[
                                     Text(food['rate']),
                                     Text(
-                                      'Give your review',
+                                      'Напишете отзив',
                                       style: TextStyle(
                                         color: primaryColor,
                                       ),
@@ -280,7 +280,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
       child: Column(
         children: <Widget>[
           CustomHeader(
-            title: 'Cart Food',
+            title: 'Поръчки',
             quantity: this.foods.length,
             internalScreen: false,
           ),
@@ -295,9 +295,9 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
               labelColor: Colors.black87,
               unselectedLabelColor: Colors.black87,
               tabs: <Widget>[
-                Tab(text: 'Add Food'),
-                Tab(text: 'Tracking Order'),
-                Tab(text: 'Done Order'),
+                Tab(text: 'Нова поръчка'),
+                Tab(text: 'Изпълняващи се'),
+                Tab(text: 'Завършени'),
               ],
             ),
           ),
@@ -322,7 +322,7 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                           color: theme.primaryColor,
                         ),
                         child: Text(
-                          'CHECKOUT',
+                          'ПОРЪЧАЙ',
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -351,16 +351,12 @@ class _CartState extends State<Cart> with TickerProviderStateMixin {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(right: 8.0),
-                              child: Icon(
-                                Icons.location_searching,
-                                size: 20.0,
-                                color: Colors.white,
-                              ),
+                              
                             ),
                             Text(
-                              'View Tracking Order',
+                              'Провери време на пристигане',
                               style: TextStyle(
-                                  color: Colors.white, fontSize: 16.0),
+                                  color: Colors.white, fontSize: 12.0),
                             ),
                           ],
                         ),

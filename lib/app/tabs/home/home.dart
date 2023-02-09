@@ -1,39 +1,55 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:food_bit_app/app/components/food_card.dart';
+import 'package:http/http.dart' as http;
+
+void main() async {
+
+  final urlPopularProducts = await http.get(Uri.parse("https://ebilling.dev/test.json"));
+  //print(response.body);
+  var getPopularProducts = json.decode(utf8.decode(urlPopularProducts.bodyBytes));
+  var popularProductsArray = getPopularProducts;
+  print(popularProductsArray);
+  
+}
 
 class Home extends StatelessWidget {
+ 
+
+//List<dynamic> popularFood = jsonDecode("your json string");
+
   final List<Map<String, String>> popularFood = [
     {
-      'name': 'Tandoori Chicken',
+      'name': 'Пиле Терияки',
       'price': '96.00',
       'rate': '4.9',
       'clients': '200',
       'image': 'images/plate-001.png'
     },
     {
-      'name': 'Salmon',
+      'name': 'Риба тон',
       'price': '40.50',
       'rate': '4.5',
       'clients': '168',
       'image': 'images/plate-002.png'
     },
     {
-      'name': 'Rice and meat',
+      'name': 'Свинско с ориз',
       'price': '130.00',
       'rate': '4.8',
       'clients': '150',
       'image': 'images/plate-003.png'
     },
     {
-      'name': 'Vegan food',
+      'name': 'Вегетерианска порция',
       'price': '400.00',
       'rate': '4.2',
       'clients': '150',
       'image': 'images/plate-007.png'
     },
     {
-      'name': 'Rich food',
+      'name': 'Сач на двама',
       'price': '1000.00',
       'rate': '4.6',
       'clients': '10',
@@ -43,20 +59,20 @@ class Home extends StatelessWidget {
 
   final List<Map<String, String>> foodOptions = [
     {
-      'name': 'Proteins',
-      'image': 'images/Icon-001.png',
+      'name': 'Салати',
+      'image': 'images/Icon-004.png',
     },
     {
-      'name': 'Burger',
-      'image': 'images/Icon-002.png',
-    },
-    {
-      'name': 'Fastfood',
+      'name': 'Предястия',
       'image': 'images/Icon-003.png',
     },
     {
-      'name': 'Salads',
-      'image': 'images/Icon-004.png',
+      'name': 'Месни ястия',
+      'image': 'images/Icon-001.png',
+    },
+    {
+      'name': 'Бургери',
+      'image': 'images/Icon-002.png',
     }
   ];
 
@@ -80,10 +96,11 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'What would you like to eat?',
+                    'Какво Ви се хапва днес?',
                     style: TextStyle(fontSize: 21.0),
                   ),
-                  Icon(Icons.notifications_none, size: 28.0)
+                  Icon(Icons.notifications_none, size: 28.0),
+                  Icon(Icons.logout, size: 28.0)
                 ],
               ),
             ),
@@ -114,7 +131,7 @@ class Home extends StatelessWidget {
                     size: 28.0,
                     color: theme.primaryColor,
                   ),
-                  hintText: 'Find a food or Restaurant',
+                  hintText: 'Търсене на ястия',
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
                     fontSize: 19.0,
@@ -174,7 +191,7 @@ class Home extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
               child: Text(
-                'Popular Food',
+                'Популярни ястия',
                 style: TextStyle(fontSize: 21.0),
               ),
             ),
@@ -220,14 +237,14 @@ class Home extends StatelessWidget {
                 top: 35.0,
               ),
               child: Text(
-                'Best Food',
+                'Специално предложение',
                 style: TextStyle(fontSize: 21.0),
               ),
             ),
             GestureDetector(
               onTap: () {
                 Map<String, String> localProduct = {
-                  'name': 'The number one!',
+                  'name': 'Тортила по гръцки',
                   'price': '26.00',
                   'rate': '5.0',
                   'clients': '150',
@@ -295,7 +312,7 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              'The number one!',
+                              'Тортила по гръцки',
                               style: TextStyle(
                                 fontSize: 18.0,
                               ),
@@ -338,7 +355,7 @@ class Home extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '\$ 26.00',
+                              '\ 26.00 лв.',
                               style: TextStyle(
                                 fontSize: 16.0,
                               ),
@@ -356,4 +373,8 @@ class Home extends StatelessWidget {
       ),
     );
   }
+}
+
+class UserModel {
+  static fromJson(data) {}
 }

@@ -1,49 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:food_bit_app/app/components/food_card.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
-class Account extends StatefulWidget {
+
+class Information extends StatefulWidget {
   @override
-  _AccountState createState() => _AccountState();
+  _InformationState createState() => _InformationState();
 }
 
-class _AccountState extends State<Account> with TickerProviderStateMixin {
+
+
+class _InformationState extends State<Information> with TickerProviderStateMixin {
   TabController _tabController;
   bool switchValue = true;
-  final List<Map<String, String>> favoriteFoods = [
-    {
-      'name': 'Пиле Терияки',
-      'price': '96.00',
-      'rate': '4.9',
-      'clients': '200',
-      'image': 'images/plate-001.png'
-    },
-    {
-      'name': 'Риба тон',
-      'price': '40.50',
-      'rate': '4.5',
-      'clients': '168',
-      'image': 'images/plate-002.png'
-    },
-    {
-      'name': 'Свинско с ориз',
-      'price': '130.00',
-      'rate': '4.8',
-      'clients': '150',
-      'image': 'images/plate-003.png'
-    },
-    {
-      'name': 'Сач на двама',
-      'price': '1000.00',
-      'rate': '4.6',
-      'clients': '10',
-      'image': 'images/plate-006.png'
-    }
-  ];
+  
 
   @override
   void initState() {
     this._tabController = TabController(
-      length: 2,
+      length: 1,
       initialIndex: 0,
       vsync: this,
     );
@@ -60,52 +34,10 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text(
-            'Данни за стая',
-            style: TextStyle(fontSize: 18.0),
-            textAlign: TextAlign.center,
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              top: 30.0,
-              bottom: 15.0,
-            ),
-            child: CircleAvatar(
-              backgroundColor: Colors.blueGrey,
-              radius: 35.0,
-              child: Icon(
-                Icons.person,
-                size: 30.0,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Text(
-            'Стая №108',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 22.0,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                
-                Text(
-                  'Етаж 1',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black54,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          
           Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 25.0,
+              vertical: 5.0,
               horizontal: 5.0,
             ),
           ),
@@ -119,8 +51,8 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
               labelStyle: TextStyle(fontSize: 20.0),
               unselectedLabelColor: Colors.black,
               tabs: <Widget>[
-                Tab(text: 'Любими ястия'),
-                Tab(text: 'Данни за стая'),
+                Tab(text: 'Информация'),
+                
               ],
             ),
           ),
@@ -128,26 +60,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
               child: TabBarView(
             controller: this._tabController,
             children: <Widget>[
-              Container(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  childAspectRatio: ((size.width / 2) / 230),
-                  children: this.favoriteFoods.map((product) {
-                    return Container(
-                      margin: const EdgeInsets.only(top: 10.0),
-                      child: FoodCard(
-                        width: size.width,
-                        primaryColor: theme.primaryColor,
-                        productName: product['name'],
-                        productPrice: product['price'],
-                        productUrl: product['image'],
-                        productClients: product['clients'],
-                        productRate: product['rate'],
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
+              
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
                 padding: const EdgeInsets.symmetric(
@@ -167,18 +80,94 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                       ))),
                       child: Row(
                         children: <Widget>[
+                          Icon(
+                            Icons.wifi,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 15.0,
                             ),
                             child: Text(
-                              'Стая №108, етаж 1',
+                              'Мрежа за интернет: Hotel Vertical',
                               style: TextStyle(fontSize: 18.0),
+                            )
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                        color: Colors.grey[300],
+                      ))),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.wifi_password,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'Парола за интернет: hotelapp1874637',
+                              style: TextStyle(fontSize: 18.0),
+                            )
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                      ),
+                      
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 90,
+                            ),
+                            child: Text("Директна връзка с интернет"),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                      ),
+                      
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                        color: Colors.grey[300],
+                      ))),
+                      
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 90,
+                            ),
+                            child: QrImage(
+                              data: "WIFI:S:hotelapp1874637;",
+                              version: QrVersions.auto,
+                              size: 200.0,
                             ),
                           )
                         ],
                       ),
                     ),
+                    
                     Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 10.0,
@@ -191,7 +180,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            Icons.local_shipping,
+                            Icons.phone_callback,
                             size: 25.0,
                             color: theme.primaryColor,
                           ),
@@ -200,7 +189,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                               horizontal: 15.0,
                             ),
                             child: Text(
-                              'Паркиран автомобил с № СВ1875АБ',
+                              'Тел. регистратура: +359879944399',
                               style: TextStyle(fontSize: 18.0),
                             ),
                           )
@@ -221,7 +210,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            Icons.account_balance_wallet,
+                            Icons.confirmation_num,
                             size: 25.0,
                             color: theme.primaryColor,
                           ),
@@ -230,42 +219,15 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                               horizontal: 15.0,
                             ),
                             child: Text(
-                              'Платежен метод: в брой',
+                              'Настаняване: след 14:00',
                               style: TextStyle(fontSize: 18.0),
                             ),
                           )
                         ],
                       ),
+                      
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey[300],
-                          ),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            'Автоматични плащаия',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          Switch(
-                            onChanged: (bool value) {
-                              setState(() {
-                                this.switchValue = value;
-                              });
-                            },
-                            value: this.switchValue,
-                            activeColor: theme.primaryColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 65.0),
                       padding: const EdgeInsets.symmetric(
                         vertical: 10.0,
                       ),
@@ -279,7 +241,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            Icons.power_settings_new,
+                            Icons.backpack,
                             size: 25.0,
                             color: theme.primaryColor,
                           ),
@@ -288,7 +250,38 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                               horizontal: 15.0,
                             ),
                             child: Text(
-                              'Изход',
+                              'Напускане: до 12:00',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          )
+                        ],
+                      ),
+                      
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.spa_outlined,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'СПА Център: от 10:00 до 20:30',
                               style: TextStyle(fontSize: 18.0),
                             ),
                           )

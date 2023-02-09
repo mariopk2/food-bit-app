@@ -31,7 +31,7 @@ Widget detailsTab() {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
           child: Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut enim leo. In sagittis velit nibh. Morbi sollicitudin lorem vitae nisi iaculis,sit amet suscipit orci mollis. Ut dictum lectus eget diam vestibulum, at eleifend felis mattis. Sed molestie congue magna at venenatis. In mollis felis ut consectetur consequat.',
+            'Пилешка пържола с много хрупкава коричка, поднесена с гарнитура от домати, краставици и зелена салата.',
           ),
         ),
         Container(
@@ -48,43 +48,7 @@ Widget detailsTab() {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Text('12am - 3pm'),
-                  ),
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.gps_fixed,
-                    color: Colors.green[300],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Text('3.54 km'),
-                  ),
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.map,
-                    color: Colors.redAccent,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Text('Map view'),
-                  )
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.directions_walk,
-                    color: Colors.deepOrange,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Text('Delivery'),
+                    child: Text('Време за приготвяне: 18 мин.'),
                   ),
                 ],
               ),
@@ -113,14 +77,14 @@ Widget renderCardReview() {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Person',
+                    'Георги Иванов',
                     style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.black87,
                     ),
                   ),
                   Text(
-                    'December 14, 2019',
+                    'Януари, 2023 г.',
                     style: TextStyle(
                       color: Colors.grey[400],
                     ),
@@ -136,7 +100,7 @@ Widget renderCardReview() {
             top: 2.0,
           ),
           child: Text(
-            'Cras ac nunc pretium, lacinia lorem ut, congue metus. Aenean vitae lectus at mauris eleifend placerat. Proin a nisl ut risus euismod ultrices et sed dui.',
+            ' Много добра кухня. Отлично обслужване!',
             style: TextStyle(
               fontSize: 13.0,
             ),
@@ -227,18 +191,7 @@ class _BodyDetailsState extends State<BodyDetails>
               ),
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        iconBadge(
-                          icon: Icons.near_me,
-                          iconColor: theme.primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Container(
@@ -253,7 +206,7 @@ class _BodyDetailsState extends State<BodyDetails>
                             style: TextStyle(fontSize: 18.0),
                           ),
                           Text(
-                            '\$ ${product['price']}',
+                            '\ ${product['price']} лв.',
                             style: TextStyle(fontSize: 18.0),
                           ),
                         ],
@@ -265,12 +218,12 @@ class _BodyDetailsState extends State<BodyDetails>
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'by',
+                          'от',
                           style: TextStyle(
                             color: Colors.grey[500],
                           ),
                         ),
-                        Text(' Restaurant'),
+                        Text(' Хотел ресторант'),
                       ],
                     ),
                   ),
@@ -307,7 +260,7 @@ class _BodyDetailsState extends State<BodyDetails>
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Text(
-                            'Add To Bad',
+                            'Поръчай',
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.white,
@@ -344,14 +297,14 @@ class _BodyDetailsState extends State<BodyDetails>
                           height: 25.0,
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'DETAILES',
+                            'Описание',
                           ),
                         ),
                         Container(
                           height: 25.0,
                           alignment: Alignment.centerRight,
                           child: Text(
-                            'Review',
+                            'Отзиви',
                           ),
                         ),
                       ],

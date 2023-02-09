@@ -109,7 +109,7 @@ class FoodCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '\$ $productPrice',
+                '\ $productPrice лв.',
                 style: TextStyle(
                   fontSize: 13.0,
                 ),
